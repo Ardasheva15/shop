@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<!-- saved from url=(0109)file:///C:/Users/Admin/Downloads/Shop%202/My%20Dev%20Store%20%E2%80%94%20Digital%20Products%20Showcase22.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dev Store — Digital Products Showcase</title>
+  <style>
+    /* Основные стили */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    /* Сетка карточек */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Стиль карточки товара */
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .product-info h3 {
+      margin: 0 0 8px;
+      font-size: 1.2em;
+    }
+
+    .product-info p {
+      color: #666;
+      font-size: 0.95em;
+      margin: 0 0 12px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #2c7;
+      font-size: 1.1em;
+    }
+
+    .buy-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    .buy-btn:hover {
+      background-color: #45a049;
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none; /* По умолчанию скрыто */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 700px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .close-btn:hover {
+      color: #333;
+    }
+
+    /* Стили карусели */
+    .carousel {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      border: none;
+      font-size: 1.5em;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .carousel-btn.left {
+      left: 10px;
+    }
+
+    .carousel-btn.right {
+      right: 10px;
+    }
+
+    .modal-product-info h2 {
+      margin-top: 0;
+    }
+
+    .modal-price {
+      font-size: 1.3em;
+      color: #2c7;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .modal-description {
+      margin: 15px 0;
+      line-height: 1.5;
+    }
+
+    /* Кнопка покупки в модальном окне */
+    .modal-buy-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+      margin-top: 10px;
+    }
+
+    .modal-buy-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<h1>English with Ardasheva Natalia</h1>
+
+<!-- Сетка товаров. Добавляйте столько карточек, сколько нужно -->
+<div class="products-grid">
+
+  <!-- Пример товара №1 -->
+  <div class="product-card" data-product-id="1">
+    <img src="./My Dev Store — Digital Products Showcase3_files/Room on the broom_Ardasheva_ссылки.jpg" alt="Product 1">
+    <div class="Room on the broom">
+      <h3>Room on the broom</h3>
+      <p>workbook</p>
+      <div class="price">400 р.</div>
+      <button class="buy-btn" onclick="openModal(1)">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Пример товара №2 -->
+  <div class="product-card" data-product-id="2">
+    <img src="./My Dev Store — Digital Products Showcase3_files/Zog.jpg" alt="Product 2">
+    <div class="product-info">
+      <h3>Back to school with dragon Zod</h3>
+      <p>workbook</p>
+      <div class="price">400 р.</div>
+      <button class="buy-btn" onclick="openModal(2)">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Добавляйте новые товары здесь по тому же шаблону -->
+  <!-- Просто копируйте блок выше и меняйте данные -->
+
+</div>
+
+<!-- Модальное окно (одно на все товары) -->
+<div id="productModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+
+    <!-- Карусель изображений -->
+    <div class="carousel" id="modalCarousel">
+      <img id="carouselImage" src="./My Dev Store — Digital Products Showcase3_files/Zog.jpg" alt="Product Image">
+      <button class="carousel-btn left" onclick="changeImage(-1)">‹</button>
+      <button class="carousel-btn right" onclick="changeImage(1)">›</button>
+    </div>
+
+    <!-- Информация о товаре -->
+    <div class="modal-product-info">
+      <!-- Эти элементы будут заполняться через JavaScript -->
+      <h2 id="modalTitle">Back to school with dragon Zog</h2>
+      <div class="modal-price" id="modalPrice">400 р.</div>
+      <p class="modal-description" id="modalDescription">workbook</p>
+
+      <!-- Сюда можно вставить кнопку с реальной ссылкой на оплату -->
+      <button class="modal-buy-btn" id="modalBuyBtn">Buy Now</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // === ДАННЫЕ ТОВАРОВ ===
+  // Замените этот объект на свои данные
+  // Каждый товар — объект с:
+  // - title
+  // - description
+  // - price (только текст, например "$29")
+  // - images: массив URL изображений (минимум одно)
+  // - buyUrl: ссылка для кнопки "Buy Now" в модальном окне (необязательно сейчас, но можно добавить позже)
+
+  const products = {
+    1: {
+      title: "Room on the broom",
+      description: "workbook",
+      price: "400 р.",
+      images: [
+        "Room on the broom_Ardasheva_ссылки.jpg",
+        "https://via.placeholder.com/600x300?text=App+Settings",
+        "https://via.placeholder.com/600x300?text=App+Dark+Mode"
+      ],
+      buyUrl: "https://vk.com/market/product/workbook-room-on-the-broom-180677995-10916882" // Позже замените на реальную ссылку
+    },
+    2: {
+      title: "Back to school with dragon Zog",
+      description: "workbook",
+      price: "400 р.",
+      images: [
+        "Zog.jpg",
+        "https://via.placeholder.com/600x300?text=Game+Boss+Fight",
+        "https://via.placeholder.com/600x300?text=Game+Map"
+      ],
+      buyUrl: "https://vk.com/market/product/back-to-school-v-3-klass-180677995-10434876"
+    }
+    // Добавляйте сюда новые товары по аналогии:
+    // 3: { ... },
+    // 4: { ... }
+  };
+
+  // === ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ДЛЯ КАРУСЕЛИ ===
+  let currentProduct = null;
+  let currentImageIndex = 0;
+
+  // Открытие модального окна
+  function openModal(productId) {
+    const product = products[productId];
+    if (!product) return;
+
+    currentProduct = productId;
+    currentImageIndex = 0;
+
+    // Заполняем данные в модальном окне
+    document.getElementById("modalTitle").textContent = product.title;
+    document.getElementById("modalDescription").textContent = product.description;
+    document.getElementById("modalPrice").textContent = product.price;
+
+    // Обновляем изображение
+    updateCarouselImage();
+
+    // Показываем модальное окно
+    document.getElementById("productModal").style.display = "flex";
+
+    // По желанию: можно задать href для кнопки
+    // document.getElementById("modalBuyBtn").onclick = () => window.location.href = product.buyUrl;
+  }
+
+  // Закрытие модального окна
+  function closeModal() {
+    document.getElementById("productModal").style.display = "none";
+  }
+
+  // Переключение изображений в карусели
+  function changeImage(direction) {
+    const images = products[currentProduct].images;
+    currentImageIndex += direction;
+
+    // Циклическая навигация
+    if (currentImageIndex >= images.length) currentImageIndex = 0;
+    if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+
+    updateCarouselImage();
+  }
+
+  function updateCarouselImage() {
+    const images = products[currentProduct].images;
+    document.getElementById("carouselImage").src = images[currentImageIndex];
+  }
+
+  // Закрытие модального окна по нажатию на затемнённую область
+  window.onclick = function(event) {
+    const modal = document.getElementById("productModal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  };
+</script>
+
+
+</body></html>
